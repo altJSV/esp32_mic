@@ -1,15 +1,11 @@
-#include <Arduino.h>
-//#include "freertos/FreeRTOS.h"
-//#include "freertos/task.h"
-#include "driver/i2s.h"
-#include "esp_system.h"
-#include <SPIFFS.h>
-#include <ESPAsyncWebServer.h>
-#include <WiFi.h>
+#include "driver/i2s.h" //Работа с итерфейсом i2s
+#include <SPIFFS.h>//файловая система spiffs
+#include <ESPAsyncWebServer.h>//веб сервер
+#include <WiFi.h>//wifi функции
 
 
-const char* ssid = "Keenetic-8995";
-const char* password =  "S1e9r8g5ey";
+const char* ssid = "ssid";
+const char* password =  "pass";
 const int record_time = 5;  // время записи в секундах
 
 const int headerSize = 44;
@@ -86,7 +82,6 @@ void I2S_Init(i2s_mode_t MODE, i2s_bits_per_sample_t BPS)
     };
     Serial.println("using ADC_builtin");
     i2s_driver_install(I2S_NUM_0, &i2s_config, 0, NULL);
-    // GPIO36, VP
     i2s_set_adc_mode(ADC_UNIT_1, ADC1_CHANNEL_6);  
   
 }
